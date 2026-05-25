@@ -54,23 +54,26 @@ async def websocket_endpoint(websocket: WebSocket):
     """
     await manager.connect(websocket)
     try:
-        # Mock broadcasting state from the engine.
-        # In a real app, the LiveEngine would emit events to an asyncio Queue or Redis channel that this task consumes.
         while True:
-            # Check for commands
-            try:
-                data = await asyncio.wait_for(websocket.receive_text(), timeout=2.0)
-            except asyncio.TimeoutError:
-                data = None
+            # Echo received text (in a real app, this parses incoming subscription requests)
+            data = await websocket.receive_text()
+            if data:
+                await websocket.send_text(f"ACK: {data}")
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
 
-            # Broadcast mock state simulating the engine
+# Background task for broadcasting state to all connected websockets
+async def broadcast_market_state():
+    while True:
+        if manager.active_connections:
             await manager.broadcast({
                 "type": "orderbook_update",
                 "symbol": "BTC/USDT",
                 "best_bid": 65000.0,
                 "best_ask": 65001.0
             })
+        await asyncio.sleep(1.0)
 
-            await asyncio.sleep(1) # Broadcast every 1s
-    except WebSocketDisconnect:
-        manager.disconnect(websocket)
+@app.on_event("startup")
+async def startup_event():
+    asyncio.create_task(broadcast_market_state())

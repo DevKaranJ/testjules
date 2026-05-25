@@ -1,3 +1,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.db
+.env
+node_modules/
+.next/

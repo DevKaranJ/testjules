@@ -34,6 +34,19 @@ class LiveExecutor:
             print(f"Failed to submit order: {e}")
             return {"status": "failed", "error": str(e)}
 
+    def submit_reduce_only_order(self, symbol: str, side: str, quantity: float) -> Dict[str, Any]:
+        """
+        Submits a market order strictly for closing positions, preventing accidental exposure flipping.
+        """
+        try:
+            print(f"Submitting Reduce-Only {side} order for {quantity} {symbol}")
+            # The exact param name varies slightly by exchange in CCXT. For Binance Futures it's usually 'reduceOnly'.
+            order = self.exchange.create_order(symbol, "market", side, quantity, params={'reduceOnly': True})
+            return order
+        except Exception as e:
+            print(f"Failed to submit reduce-only order: {e}")
+            return {"status": "failed", "error": str(e)}
+
     def cancel_order(self, order_id: str, symbol: str):
         try:
             return self.exchange.cancel_order(order_id, symbol)

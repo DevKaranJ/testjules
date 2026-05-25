@@ -2,11 +2,15 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from .models import init_db
 
-# Use SQLite by default for easy running without external dependencies.
-# Can be replaced with postgresql://user:password@localhost/dbname
-DATABASE_URL = "sqlite:///crypto_trading.db"
+import os
 
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+# Use environment variable for Postgres in Docker, fallback to SQLite for local dev
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///crypto_trading.db")
+
+# check_same_thread is only valid for sqlite
+connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
+engine = create_engine(DATABASE_URL, connect_args=connect_args)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def initialize_database():
