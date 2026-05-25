@@ -4,6 +4,9 @@ from .manager import StrategyManager
 from ..execution.risk_manager import RiskManager
 from ..execution.position_manager import PositionManager
 from ..execution.models import FeeModel, SlippageModel
+from ..data.database import SessionLocal, initialize_database
+from ..data.models import TradeLog, BacktestRun
+import json
 
 class BacktestEngine:
     """
@@ -20,6 +23,10 @@ class BacktestEngine:
         self.history = []
         self.total_trades = 0
         self.winning_trades = 0
+        self.start_equity = risk_config.get("starting_equity", 10000.0) if risk_config else 10000.0
+
+        # Ensure database is initialized
+        initialize_database()
 
     def set_mode(self, mode: int, selected_strategy_names: List[str] = None):
         """Configure which strategies to run during the backtest."""
@@ -59,7 +66,50 @@ class BacktestEngine:
                 trade_log = self.position_manager._close_position(pos, final_tick["price"], "END_OF_BACKTEST")
                 self._record_closed_trade(trade_log)
 
+        self._save_results_to_db()
         self._print_results()
+
+    def _save_results_to_db(self):
+        """Persists the backtest summary and trade logs to the database."""
+        db = SessionLocal()
+        try:
+            active_strategies = ",".join(self.strategy_manager.active_strategies.keys())
+            win_rate = (self.winning_trades / self.total_trades * 100) if self.total_trades > 0 else 0.0
+
+            # Save Backtest Summary
+            run = BacktestRun(
+                strategies=active_strategies,
+                start_equity=self.start_equity,
+                end_equity=self.risk_manager.total_equity,
+                total_trades=self.total_trades,
+                win_rate=win_rate,
+                max_drawdown=self.risk_manager.daily_drawdown,
+                parameters=self.risk_manager.config
+            )
+            db.add(run)
+
+            # Save individual Trade Logs
+            for trade in self.history:
+                log = TradeLog(
+                    strategy_name=trade["strategy"],
+                    symbol=trade["symbol"],
+                    direction=trade["direction"],
+                    entry_price=trade["entry_price"],
+                    exit_price=trade["exit_price"],
+                    quantity=trade["quantity"],
+                    pnl=trade["net_pnl"],
+                    fee=trade["fees"],
+                    slippage=trade["slippage"]
+                )
+                db.add(log)
+
+            db.commit()
+            print("Successfully saved backtest results to database.")
+        except Exception as e:
+            db.rollback()
+            print(f"Error saving to DB: {e}")
+        finally:
+            db.close()
 
     def _execute_entry(self, strategy_name: str, signal: Dict[str, Any], current_price: float):
         """
@@ -80,8 +130,9 @@ class BacktestEngine:
             return
 
         # Deduct initial fees from equity
+        symbol = signal.get("pair", signal.get("symbol", "BTC/USDT"))
         entry_fee, slippage = self.position_manager.open_position(
-            strategy_name, "BTCUSDT", direction, entry_price, quantity, stop_loss, take_profit
+            strategy_name, symbol, direction, entry_price, quantity, stop_loss, take_profit
         )
         self.risk_manager.total_equity -= entry_fee
 

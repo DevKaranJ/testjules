@@ -59,7 +59,7 @@ class PositionManager:
         Returns a list of newly closed trade logs.
         """
         current_price = tick["price"]
-        symbol = tick.get("symbol", "BTCUSDT") # Default for simulation
+        symbol = tick.get("symbol", "BTC/USDT") # Default for simulation
 
         newly_closed = []
 

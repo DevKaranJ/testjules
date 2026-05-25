@@ -19,16 +19,16 @@ def test_position_manager_lifecycle():
 
     # Open long position
     # Entry 100, Stop Loss 90, Take Profit 110
-    pm.open_position("TestStrat", "BTCUSDT", "LONG", 100.0, 1.0, 90.0, 110.0)
+    pm.open_position("TestStrat", "BTC/USDT", "LONG", 100.0, 1.0, 90.0, 110.0)
     assert len(pm.positions) == 1
 
     # Tick at 105 (no close)
-    closed = pm.update({"price": 105.0, "symbol": "BTCUSDT"})
+    closed = pm.update({"price": 105.0, "symbol": "BTC/USDT"})
     assert len(closed) == 0
     assert len(pm.positions) == 1
 
     # Tick at 110 (take profit hit)
-    closed = pm.update({"price": 110.0, "symbol": "BTCUSDT"})
+    closed = pm.update({"price": 110.0, "symbol": "BTC/USDT"})
     assert len(closed) == 1
     assert len(pm.positions) == 0
 
