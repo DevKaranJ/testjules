@@ -1,5 +1,6 @@
 from .base import Strategy
 from typing import Dict, Any
+import numpy as np
 
 class OrderFlowScalpingStrategy(Strategy):
     """
@@ -10,28 +11,29 @@ class OrderFlowScalpingStrategy(Strategy):
     def __init__(self, config: Dict[str, Any] = None):
         super().__init__(config)
         self.confidence_threshold = self.config.get("confidence_threshold", 75)
+        self.latest_price = 0.0
+        self.latest_symbol = "BTC/USDT"
 
     def on_tick(self, tick_data: Dict[str, Any]) -> None:
-        pass
+        self.latest_price = tick_data["price"]
+        self.latest_symbol = tick_data.get("symbol", "BTC/USDT")
 
     def on_orderbook(self, orderbook_data: Dict[str, Any]) -> None:
         pass
 
     def generate_signal(self) -> Any:
-        # Mathematical evaluation of footprint, delta, CVD
         setup_quality = self._evaluate_multi_factor_confluence()
 
-        if setup_quality > self.confidence_threshold:
+        if setup_quality > self.confidence_threshold and self.latest_price > 0:
+            entry = self.latest_price
             return {
-                "pair": "BTCUSDT",
+                "pair": self.latest_symbol,
+                "symbol": self.latest_symbol,
                 "direction": "LONG",
-                "entry": 65000.0,
-                "stop_loss": 64800.0, # Below liquidity sweep
-                "take_profit": 65500.0, # Next HVN
+                "entry": entry,
+                "stop_loss": entry * 0.997,
+                "take_profit": entry * 1.005,
                 "rr_ratio": 2.5,
-                "delta_stats": {"divergence": True, "value": -500},
-                "imbalance_stats": {"stacked_ask": True},
-                "footprint_explanation": "Absorption of aggressive sellers at local low, stacked ask imbalance on reversal.",
                 "confidence_score": setup_quality,
                 "reason_for_execution": "Multi-factor confluence: Sweep + Delta Divergence + Absorption."
             }

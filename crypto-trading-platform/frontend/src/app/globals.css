@@ -1,26 +1,186 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+  --border: #1f1f1f;
+  --text-primary: #d4d4d4;
+  --text-secondary: #808080;
+  --text-accent: #4ade80;
+  --text-buy: #4ade80;
+  --text-sell: #ef4444;
+  --text-warn: #fbbf24;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+.terminal-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1px;
+  min-height: 100vh;
+  background: var(--border);
+}
+
+.terminal-grid > div {
+  background: var(--bg-primary);
+  padding: 8px;
+}
+
+.terminal-panel {
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+.terminal-header .title {
+  color: var(--text-accent);
+  font-weight: 700;
+}
+
+.terminal-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+}
+
+.terminal-stat .label {
+  color: var(--text-secondary);
+}
+
+.terminal-stat .value {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.terminal-stat .value.up { color: var(--text-buy); }
+.terminal-stat .value.down { color: var(--text-sell); }
+
+.terminal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.terminal-table th {
+  text-align: left;
+  padding: 4px 8px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.terminal-table td {
+  padding: 3px 8px;
+  border-bottom: 1px solid var(--bg-tertiary);
+  white-space: nowrap;
+}
+
+.terminal-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.terminal-btn {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 3px 10px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.terminal-btn:hover {
+  background: #2a2a2a;
+  border-color: #333;
+}
+
+.terminal-btn.buy { color: var(--text-buy); border-color: var(--text-buy); }
+.terminal-btn.buy:hover { background: rgba(74, 222, 128, 0.1); }
+.terminal-btn.sell { color: var(--text-sell); border-color: var(--text-sell); }
+.terminal-btn.sell:hover { background: rgba(239, 68, 68, 0.1); }
+.terminal-btn.warn { color: var(--text-warn); border-color: var(--text-warn); }
+.terminal-btn.warn:hover { background: rgba(251, 191, 36, 0.1); }
+
+.terminal-input {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 3px 6px;
+  font-family: inherit;
+  font-size: 11px;
+  width: 100%;
+}
+
+.terminal-input:focus {
+  outline: none;
+  border-color: var(--text-accent);
+}
+
+.terminal-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  outline: none;
+}
+
+.terminal-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-accent);
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
 }

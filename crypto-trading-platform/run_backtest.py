@@ -16,13 +16,26 @@ from backend.strategies.dispersion_arb import DispersionArbitrageStrategy
 from backend.strategies.orderflow_scalping import OrderFlowScalpingStrategy
 from backend.data.ccxt_feed import CCXTFeed
 
-def generate_mock_data(num_ticks=200):
-    """Fallback if API is blocked."""
+def fetch_historical_data(symbol="BTC/USDT", timeframe='1m', limit=200):
+    """Fetch real market data from CCXT, with synthetic fallback."""
+    feed = CCXTFeed("binance")
+    try:
+        print(f"Fetching {limit} {timeframe} candles for {symbol} from Binance...")
+        data = feed.fetch_ohlcv(symbol, timeframe=timeframe, limit=limit)
+        if data and len(data) > 0:
+            return data
+    except Exception as e:
+        print(f"CCXT fetch failed: {e}")
+
+    print("Falling back to synthetic data with realistic regime structure...")
     data = []
-    current_price = 65000.0
-    for i in range(num_ticks):
-        current_price += random.uniform(-600, 600)
-        data.append({"timestamp": i, "price": current_price, "symbol": "BTC/USDT"})
+    price = 65000.0
+    import numpy as np
+    for i in range(limit):
+        drift = np.sin(i / 20) * 200
+        noise = random.uniform(-300, 300)
+        price += drift + noise
+        data.append({"timestamp": i, "price": price, "symbol": symbol, "volume": random.uniform(10, 100)})
     return data
 
 def main():
@@ -53,19 +66,8 @@ def main():
     print("Configuring Backtester for MODE_ALL...")
     engine.set_mode(StrategyManager.MODE_ALL)
 
-    # 4. Fetch actual market data using CCXT
-    feed = CCXTFeed("binance")
-    try:
-        print("Fetching historical data for BTC/USDT from Binance...")
-        data = feed.fetch_ohlcv("BTC/USDT", timeframe='1m', limit=200)
-        # Modify real data slightly to trigger our mock signals which expect some variance
-        for idx, tick in enumerate(data):
-             variance = random.uniform(-500, 500)
-             tick["price"] += variance
-    except Exception as e:
-        print(f"Failed to fetch data: {e}")
-        print("Falling back to local mock data generation due to IP restrictions...")
-        data = generate_mock_data(200)
+    # 4. Fetch actual market data
+    data = fetch_historical_data()
 
     # 5. Run Engine
     engine.run(data)

@@ -1,9 +1,3 @@
-import sys
-import os
-
-# Add project root to sys.path to allow correct imports
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
-
 from backend.core.events import MarketEvent, SignalEvent
 
 def test_market_event():

@@ -1,8 +1,4 @@
-import sys
-import os
 import pytest
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
 from backend.engine.manager import StrategyManager
 from backend.strategies.base import Strategy

@@ -88,9 +88,11 @@ class BacktestEngine:
             )
             db.add(run)
 
-            # Save individual Trade Logs
+            db.flush()
+
             for trade in self.history:
                 log = TradeLog(
+                    run_id=run.id,
                     strategy_name=trade["strategy"],
                     symbol=trade["symbol"],
                     direction=trade["direction"],
@@ -115,22 +117,24 @@ class BacktestEngine:
         """
         Processes an approved signal and opens a position via the PositionManager.
         """
-        direction = signal.get("direction", signal.get("action", "UNKNOWN")).upper()
+        direction = signal.get("direction", "").upper()
         if direction not in ["LONG", "SHORT"]:
-            # Fallback for strategies that don't output explicit long/short
-            direction = "LONG" if "LONG" in direction else "SHORT"
+            print(f"SKIP {strategy_name}: invalid direction '{direction}'")
+            return
 
         entry_price = signal.get("entry", current_price)
+        if entry_price <= 0:
+            print(f"SKIP {strategy_name}: invalid entry price {entry_price}")
+            return
+
         stop_loss = signal.get("stop_loss", current_price * 0.95 if direction == 'LONG' else current_price * 1.05)
         take_profit = signal.get("take_profit", current_price * 1.10 if direction == 'LONG' else current_price * 0.90)
 
-        # Calculate size based on risk manager
         quantity = self.risk_manager.calculate_position_size(entry_price, stop_loss)
         if quantity <= 0:
             return
 
-        # Deduct initial fees from equity
-        symbol = signal.get("pair", signal.get("symbol", "BTC/USDT"))
+        symbol = signal.get("symbol", signal.get("pair", "BTC/USDT"))
         entry_fee, slippage = self.position_manager.open_position(
             strategy_name, symbol, direction, entry_price, quantity, stop_loss, take_profit
         )

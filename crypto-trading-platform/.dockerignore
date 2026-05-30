@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.db
+.env
+.git/
+.gitignore
+.memory/
+.pytest_cache/
+.cache/
+*.md
+node_modules/
+.next/
+.DS_Store
+docker/

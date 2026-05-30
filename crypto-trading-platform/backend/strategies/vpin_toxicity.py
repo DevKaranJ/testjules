@@ -52,6 +52,6 @@ class VPINToxicityStrategy(Strategy):
         latest_vpin = self.historical_vpin[-1]
 
         if latest_vpin > self.toxicity_threshold:
-            return {"action": "HALT_MARKET_MAKING", "reason": f"high_toxicity_{latest_vpin:.2f}", "direction": "NONE"}
+            return "NO TRADE — high toxicity, halting."
 
         return "NO TRADE — normal conditions."

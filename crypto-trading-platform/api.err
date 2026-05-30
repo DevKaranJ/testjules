@@ -1,0 +1,327 @@
+INFO:     Will watch for changes in these directories: ['C:\\Users\\Pradeep Joshi\\Documents\\GitHub\\testjules\\crypto-trading-platform']
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     Started reloader process [16288] using WatchFiles
+INFO:     Started server process [13636]
+INFO:     Waiting for application startup.
+INFO:backend.api.main:{"host": "0.0.0.0", "port": 8000, "event": "api_starting", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T07:31:29.199416Z"}
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend\core\auth.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:backend.api.main:{"event": "api_shutdown", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T07:43:22.663482Z"}
+INFO:     Application shutdown complete.
+INFO:     Finished server process [21136]
+WARNING:  WatchFiles detected changes in 'conftest.py', 'backend\execution\executor.py', 'backend\api\main.py', 'backend\core\config.py', 'backend\engine\backtest_engine.py', 'backend\data\models.py', 'alembic\versions\76c98572e94d_add_user_id_columns.py', 'backend\core\schemas.py'. Reloading...
+INFO:     Started server process [22160]
+INFO:     Waiting for application startup.
+INFO:backend.api.main:{"host": "0.0.0.0", "port": 8000, "event": "api_starting", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T07:43:23.603657Z"}
+INFO:     Application startup complete.
+ERROR:    Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 741, in lifespan
+    await receive()
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\lifespan\on.py", line 137, in receive
+    return await self.receive_queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\queues.py", line 158, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+INFO:     Started server process [18276]
+INFO:     Waiting for application startup.
+INFO:backend.api.main:{"host": "0.0.0.0", "port": 8000, "event": "api_starting", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T07:43:24.502645Z"}
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend\api\main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:backend.api.main:{"event": "api_shutdown", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T07:48:23.866509Z"}
+INFO:     Application shutdown complete.
+INFO:     Finished server process [18276]
+WARNING:  WatchFiles detected changes in 'backend\tests\test_integration_api.py'. Reloading...
+INFO:     Started server process [404]
+INFO:     Waiting for application startup.
+INFO:backend.api.main:{"host": "0.0.0.0", "port": 8000, "event": "api_starting", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T07:48:24.701863Z"}
+INFO:     Application startup complete.
+ERROR:    Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 741, in lifespan
+    await receive()
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\lifespan\on.py", line 137, in receive
+    return await self.receive_queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\queues.py", line 158, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+INFO:     Started server process [16080]
+INFO:     Waiting for application startup.
+INFO:backend.api.main:{"host": "0.0.0.0", "port": 8000, "event": "api_starting", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T07:48:25.511931Z"}
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend\core\auth.py'. Reloading...
+^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 69, in serve
+    await self._serve(sockets)
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 76, in _serve
+    config.load()
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\config.py", line 434, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\importer.py", line 22, in import_from_string
+    raise exc from None
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\Pradeep Joshi\Documents\GitHub\testjules\crypto-trading-platform\backend\api\main.py", line 20, in <module>
+    from ..core.dependencies import get_current_user, require_user
+  File "C:\Users\Pradeep Joshi\Documents\GitHub\testjules\crypto-trading-platform\backend\core\dependencies.py", line 7, in <module>
+    from .auth import decode_access_token
+  File "C:\Users\Pradeep Joshi\Documents\GitHub\testjules\crypto-trading-platform\backend\core\auth.py", line 3, in <module>
+    import jwt
+ModuleNotFoundError: No module named 'jwt'
+WARNING:  WatchFiles detected changes in 'backend\api\main.py'. Reloading...
+INFO:     Started server process [4580]
+INFO:     Waiting for application startup.
+INFO:backend.api.main:{"host": "0.0.0.0", "port": 8000, "event": "api_starting", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T07:44:44.058430Z"}
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend\tests\test_integration_api.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:backend.api.main:{"event": "api_shutdown", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T07:49:43.455080Z"}
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4580]
+WARNING:  WatchFiles detected changes in 'backend\tests\test_integration_api.py'. Reloading...
+INFO:     Started server process [12196]
+INFO:     Waiting for application startup.
+INFO:backend.api.main:{"host": "0.0.0.0", "port": 8000, "event": "api_starting", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T07:49:44.317096Z"}
+INFO:     Application startup complete.
+ERROR:    Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 741, in lifespan
+    await receive()
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\lifespan\on.py", line 137, in receive
+    return await self.receive_queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\queues.py", line 158, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+INFO:     Started server process [4052]
+INFO:     Waiting for application startup.
+INFO:backend.api.main:{"host": "0.0.0.0", "port": 8000, "event": "api_starting", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T07:49:45.154200Z"}
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend\core\auth.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:backend.api.main:{"event": "api_shutdown", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T08:03:52.750123Z"}
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4052]
+WARNING:  WatchFiles detected changes in 'backend\data\models.py', 'backend\api\routes\auth.py', 'backend\core\config.py', 'backend\core\schemas.py', 'backend\core\dependencies.py'. Reloading...
+Process SpawnProcess-7:
+Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 69, in serve
+    await self._serve(sockets)
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 76, in _serve
+    config.load()
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\config.py", line 434, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\Pradeep Joshi\Documents\GitHub\testjules\crypto-trading-platform\backend\api\main.py", line 12, in <module>
+    from ..data.models import TradeLog, BacktestRun
+ImportError: cannot import name 'User' from 'backend.data.models' (C:\Users\Pradeep Joshi\Documents\GitHub\testjules\crypto-trading-platform\backend\data\models.py)
+WARNING:  WatchFiles detected changes in 'backend\api\main.py'. Reloading...
+Process SpawnProcess-8:
+Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 69, in serve
+    await self._serve(sockets)
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 76, in _serve
+    config.load()
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\config.py", line 434, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\Pradeep Joshi\Documents\GitHub\testjules\crypto-trading-platform\backend\api\main.py", line 121, in <module>
+    def get_backtest_runs(db: Session = Depends(get_db)):
+                                        ^^^^^^^
+NameError: name 'Depends' is not defined
+Process SpawnProcess-9:
+Traceback (most recent call last):
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 69, in serve
+    await self._serve(sockets)
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 76, in _serve
+    config.load()
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\config.py", line 434, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pradeep Joshi\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\Pradeep Joshi\Documents\GitHub\testjules\crypto-trading-platform\backend\api\main.py", line 121, in <module>
+    def get_backtest_runs(db: Session = Depends(get_db)):
+                                        ^^^^^^^
+NameError: name 'Depends' is not defined
+WARNING:  WatchFiles detected changes in 'backend\api\main.py'. Reloading...
+INFO:     Started server process [12676]
+INFO:     Waiting for application startup.
+INFO:backend.api.main:{"host": "0.0.0.0", "port": 8000, "event": "api_starting", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T08:04:06.766247Z"}
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend\tests\test_integration_api.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:backend.api.main:{"event": "api_shutdown", "logger": "backend.api.main", "level": "info", "timestamp": "2026-05-30T08:09:16.361019Z"}
+INFO:     Application shutdown complete.
+INFO:     Finished server process [12676]

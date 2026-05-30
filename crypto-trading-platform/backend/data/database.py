@@ -1,20 +1,20 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 from .models import init_db
+from ..core.config import settings
+from structlog import get_logger
 
-import os
+logger = get_logger()
 
-# Use environment variable for Postgres in Docker, fallback to SQLite for local dev
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///crypto_trading.db")
-
-# check_same_thread is only valid for sqlite
-connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
-engine = create_engine(DATABASE_URL, connect_args=connect_args)
+connect_args = {"check_same_thread": False} if settings.is_sqlite else {}
+engine = create_engine(settings.database_url, connect_args=connect_args, pool_pre_ping=True)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+
 def initialize_database():
     init_db(engine)
+
 
 def get_db():
     db = SessionLocal()
@@ -22,3 +22,13 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+def check_db_connection() -> bool:
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+        return True
+    except Exception as e:
+        logger.error("db_connection_failed", error=str(e))
+        return False

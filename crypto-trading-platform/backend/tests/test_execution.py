@@ -1,8 +1,3 @@
-import sys
-import os
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
-
 from backend.execution.models import FeeModel, SlippageModel
 from backend.execution.position_manager import PositionManager
 
